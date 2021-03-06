@@ -150,7 +150,7 @@ if not has_seccomp:
     print('*' * 79)
     macros.append(('PTBOX_NO_SECCOMP', None))
 
-extensions = [Extension('dmoj.checkers._checker', sources=['dmoj/checkers/_checker.c']),
+extensions = [Extension('dmoj.checkers._checker', sources=['dmoj/checkers/_checker.cpp']),
               Extension('dmoj.cptbox._cptbox', sources=cptbox_sources,
                         language='c++', libraries=libs, define_macros=macros),
               SimpleSharedObject('dmoj.utils.setbufsize', sources=['dmoj/utils/setbufsize.c'])]
