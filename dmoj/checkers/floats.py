@@ -118,4 +118,4 @@ def check(
                                              ))
     except Exception as e:
         return CheckerResult(False, 0, "Checker error", str(e))
-    return CheckerResult(True, point_value, None, f"ok {cnt_token} token(s)")
+    return CheckerResult(True, point_value, None, f"{cnt_token} token(s)")

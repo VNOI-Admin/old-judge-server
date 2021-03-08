@@ -15,5 +15,5 @@ def check(process_output: bytes, judge_output: bytes, pe_allowed: bool = True, *
         # in the event the standard checker would have passed the problem, raise a presentation error
         if passed:
             feedback = "Presentation Error, check your whitespace"
-            extended_feedback = standard_feedback
+            extended_feedback = standard_feedback.decode("utf-8")
     return CheckerResult(False, 0, feedback=feedback, extended_feedback=extended_feedback)
