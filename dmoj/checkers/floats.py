@@ -74,9 +74,9 @@ def check(
             judge_tokens = judge_line.split()
 
             if len(process_tokens) != len(judge_tokens):
-                return CheckerResult(False, 0, "Presentation Error", 
+                return CheckerResult(False, 0, "Presentation Error",
                                      "{}{} line differs, judge's output has {} token(s), participant's output has {}".format(
-                                        cnt_line, english_ending(cnt_line), len(judge_tokens), len(process_tokens)
+                                         cnt_line, english_ending(cnt_line), len(judge_tokens), len(process_tokens)
                                      ))
 
             for process_token, judge_token in zip(process_tokens, judge_tokens):
@@ -87,33 +87,33 @@ def check(
                 except ValueError:
                     # If it's not a float the token must match exactly
                     if process_token != judge_token:
-                        return CheckerResult(False, 0, None, 
+                        return CheckerResult(False, 0, None,
                                              "{}{} token differs - expected: '{}', found: '{}'".format(
-                                                cnt_token,
-                                                english_ending(cnt_token),
-                                                compress(judge_token),
-                                                compress(process_token)
+                                                 cnt_token,
+                                                 english_ending(cnt_token),
+                                                 compress(judge_token),
+                                                 compress(process_token)
                                              ))
                 else:
                     try:
                         process_float = float(process_token)
                     except ValueError:
-                        return CheckerResult(False, 0, "Presentation Error", 
+                        return CheckerResult(False, 0, "Presentation Error",
                                              "{}{} token differs - expected float: '{}', found: '{}'".format(
-                                                cnt_token,
-                                                english_ending(cnt_token),
-                                                compress(judge_token),
-                                                compress(process_token)
+                                                 cnt_token,
+                                                 english_ending(cnt_token),
+                                                 compress(judge_token),
+                                                 compress(process_token)
                                              ))
                     if not verify_float(process_float, judge_float, epsilon):
                         return CheckerResult(False, 0, None,
                                              "{0}{1} number differs - expected: '{2:.{5}f}', found: '{3:.{5}f}', error = '{4:.{5}f}'".format(
-                                                cnt_token,
-                                                english_ending(cnt_token),
-                                                judge_float,
-                                                process_float,
-                                                error_float(process_float, judge_float),
-                                                precision + 2
+                                                 cnt_token,
+                                                 english_ending(cnt_token),
+                                                 judge_float,
+                                                 process_float,
+                                                 error_float(process_float, judge_float),
+                                                 precision + 2
                                              ))
     except Exception as e:
         return CheckerResult(False, 0, "Checker error", str(e))
