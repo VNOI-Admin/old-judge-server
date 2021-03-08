@@ -31,19 +31,14 @@ static inline int iswhite(char ch) {
     return 0;
 }
 
-/* Increment *pos to the next non-whitespace character, and returns
- * 2 if a new line was seen, 1 if only spaces were seen, and 0 if no whitespace was seen */
-static inline int skip_spaces(const char *str, size_t *pos, size_t length) {
-    int saw_line = 0, saw_space = 0;
+/* Increment *pos to the next non-whitespace character */
+static inline void skip_spaces(const char *str, size_t *pos, size_t length) {
     while (*pos < length) {
-        saw_line |= isline(str[*pos]);
         if (!iswhite(str[*pos])) {
             break;
         }
         ++*pos;
-        saw_space = 1;
     }
-    return saw_line ? 2 : saw_space;
 }
 
 inline std::string compress(const std::string &s) {
@@ -71,7 +66,7 @@ char BUFFER[BUFFER_SIZE + 1];  // always have a \0
 
 #define FMT_TO_RESULT(fmt, ...) PyOS_snprintf(BUFFER, BUFFER_SIZE, fmt, __VA_ARGS__)
 #define TO_RESULT(fmt) PyOS_snprintf(BUFFER, BUFFER_SIZE, fmt)
-
+/* compare sequence of tokens, ignore whitespace*/
 static int check_standard(const char *judge, size_t jlen, const char *process, size_t plen) {
     size_t j = 0, p = 0;
 
@@ -79,8 +74,8 @@ static int check_standard(const char *judge, size_t jlen, const char *process, s
     while (p < plen && iswhite(process[p])) ++p;
     int cnt_token = 0;
     for (;;) {
-        int js = skip_spaces(judge, &j, jlen);
-        int ps = skip_spaces(process, &p, plen);
+        skip_spaces(judge, &j, jlen);
+        skip_spaces(process, &p, plen);
         if (j == jlen || p == plen) {
             if (j == jlen && p == plen) {
                 FMT_TO_RESULT("ok %d token(s)", cnt_token);
@@ -91,13 +86,6 @@ static int check_standard(const char *judge, size_t jlen, const char *process, s
                 return WRONG_ANSWER;
             }
             TO_RESULT("Unexpected EOF in the participant's output");
-            return WRONG_ANSWER;
-        }
-        if (js != ps) {
-            if (js == 2)
-                TO_RESULT("Expected EOLn in the participant's output");
-            else
-                TO_RESULT("Unexpected EOLn in the participant's output");
             return WRONG_ANSWER;
         }
 
