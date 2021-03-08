@@ -42,7 +42,6 @@ class _CompiledExecutorMeta(abc.ABCMeta):
             cache_file_path = "/tmp/" + cache_key + ".txt"
             if os.path.isfile(cache_file_path):
                 executor = open(cache_file_path).read().strip().split('\n')
-                print(executor)
                 assert len(executor) == 2
                 # Minimal sanity checking: is the file still there? If not, we'll just recompile.
                 if os.path.isfile(executor[0]):
