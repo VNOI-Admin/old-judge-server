@@ -67,7 +67,8 @@ def check(
             point_value,
             time_limit,
             memory_limit,
-            feedback=utf8text(proc_output) if feedback else '',
+            feedback='',
+            extended_feedback=utf8text(proc_output) if feedback else '',
             name='checker',
             stderr=error,
         )
