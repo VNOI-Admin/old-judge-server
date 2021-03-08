@@ -1,5 +1,5 @@
 generator:
-    language: PY2
+    language: PY3
     source: gen.py
 test_cases:
 - {generator_args: [1, 2], points: 1}
