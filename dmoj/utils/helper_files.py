@@ -37,7 +37,7 @@ def compile_with_auxiliary_files(filenames, flags=[], lang=None, compiler_time_l
 
     executor = executors.get(lang)
     if not executor:
-        raise IOError('could not find an appropriate C++ executor')
+        raise IOError(f'could not find an appropriate {lang} executor')
 
     executor = executor.Executor
 
