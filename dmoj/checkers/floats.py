@@ -60,7 +60,6 @@ def check(
 
     verify_float = {'absolute': verify_absolute, 'relative': verify_relative, 'default': verify_default}.get(error_mode)
     error_float = {'absolute': error_absolute, 'relative': error_relative, 'default': error_default}.get(error_mode)
-    print("precision", precision)
     if not verify_float or not error_float:
         raise InternalError('invalid `error_mode` value')
 

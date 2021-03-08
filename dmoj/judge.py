@@ -454,6 +454,8 @@ class JudgeWorker:
 
         yield IPC.GRADING_BEGIN, (self.grader.is_pretested,)
 
+        import time
+        start_time = time.time()
         flattened_cases: List[Tuple[Optional[int], Union[TestCase, BatchedTestCase]]] = []
         batch_number = 0
         for case in self.grader.cases():
@@ -504,6 +506,7 @@ class JudgeWorker:
                 yield IPC.BATCH_END, (batch_number,)
                 is_short_circuiting &= is_short_circuiting_enabled
 
+        print("%s second" % (time.time() - start_time))
         yield IPC.GRADING_END, ()
 
     def _do_abort(self) -> None:
