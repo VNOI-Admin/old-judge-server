@@ -78,7 +78,7 @@ static int check_standard(const char *judge, size_t jlen, const char *process, s
         skip_spaces(process, &p, plen);
         if (j == jlen || p == plen) {
             if (j == jlen && p == plen) {
-                FMT_TO_RESULT("ok %d token(s)", cnt_token);
+                FMT_TO_RESULT("%d token(s)", cnt_token);
                 return ACCEPTED;
             }
             if (j == jlen) {
