@@ -260,6 +260,8 @@ class Tester:
     def parse_points(self, points):
         if points is None or points == '*':
             return None
+        elif isinstance(points, float):
+            return {float(points)}
         elif isinstance(points, (str, int)):
             return {int(points)}
         else:
