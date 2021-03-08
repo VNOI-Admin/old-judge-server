@@ -76,8 +76,8 @@ def check(
 
             if len(process_tokens) != len(judge_tokens):
                 return CheckerResult(False, 0, "Presentation Error", 
-                                     "On line {}, judge's output has {} token(s), participant's output has {}".format(
-                                        cnt_line, len(judge_tokens), len(process_tokens)
+                                     "{}{} line differs, judge's output has {} token(s), participant's output has {}".format(
+                                        cnt_line, english_ending(cnt_line), len(judge_tokens), len(process_tokens)
                                      ))
 
             for process_token, judge_token in zip(process_tokens, judge_tokens):
