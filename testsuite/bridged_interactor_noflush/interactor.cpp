@@ -20,7 +20,6 @@ int main(int argc, char *argv[]) {
     } else {
       puts("SINKS");
     }
-    fflush(stdout);
     guesses++;
   }
   if (guesses <= 31)
