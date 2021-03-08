@@ -54,7 +54,7 @@ class _CompiledExecutorMeta(abc.ABCMeta):
 
         if is_cached:
             cache_file_path = "/tmp/" + cache_key + ".txt"
-            open(cache_file_path, 'w').write('\n'.join([obj._executable, obj._dir]))
+            open(cache_file_path, 'w').write('\n'.join([str(obj._executable), str(obj._dir)]))
 
         return obj
 
