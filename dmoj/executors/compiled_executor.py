@@ -6,9 +6,7 @@ import signal
 import subprocess
 import threading
 import time
-from typing import Callable, Dict, List, Optional
-
-import pylru
+from typing import Callable, List, Optional
 
 from dmoj.error import CompileError, OutputLimitExceeded
 from dmoj.judgeenv import env

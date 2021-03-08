@@ -1,4 +1,5 @@
 from re import split as resplit
+from typing import Union
 
 from dmoj.error import InternalError
 from dmoj.result import CheckerResult
@@ -50,7 +51,7 @@ def error_default(process_float: float, judge_float: float) -> float:
 
 def check(
     process_output: bytes, judge_output: bytes, point_value: float, precision: int = 6, error_mode: str = 'default', **kwargs
-) -> bool:
+) -> Union[CheckerResult, bool]:
     # Discount empty lines
     process_lines = list(filter(None, resplit(b'[\r\n]', utf8bytes(process_output))))
     judge_lines = list(filter(None, resplit(b'[\r\n]', utf8bytes(judge_output))))
