@@ -112,4 +112,4 @@ class CheckerResult:
         self.passed = passed
         self.points = points
         self.feedback = None if feedback is None else feedback[:50]
-        self.extended_feedback = None if extended_feedback is None else extended_feedback[:128]
+        self.extended_feedback = None if extended_feedback is None else extended_feedback[:180]

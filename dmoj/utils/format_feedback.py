@@ -3,7 +3,7 @@ def compress(s):
         s = s.decode("utf-8")
     if len(s) <= 64:
         return s
-    return s[:30] + "..." + s[-30:]
+    return s[:30] + "..." + s[-31:]
 
 
 def english_ending(x):
