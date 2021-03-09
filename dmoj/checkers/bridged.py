@@ -28,7 +28,7 @@ def check(
     judge_input,
     problem_id,
     files,
-    lang,
+    lang='CPP17',
     time_limit=env['generator_time_limit'],
     memory_limit=env['generator_memory_limit'],
     compiler_time_limit=env['generator_compiler_limit'],
