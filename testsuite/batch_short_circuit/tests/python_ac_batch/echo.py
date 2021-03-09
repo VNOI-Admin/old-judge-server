@@ -1,1 +1,1 @@
-print(input())
+print raw_input()

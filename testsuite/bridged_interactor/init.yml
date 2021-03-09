@@ -1,4 +1,4 @@
-unbuffered: true
+unbuffered: True
 archive: seed2.zip
 interactive: {files: interactor.cpp, type: testlib}
 test_cases:

@@ -1,1 +1,4 @@
-bool is_valid(int n) { return n == 1; }
+bool is_valid(int n)
+{
+    return n == 1;
+}

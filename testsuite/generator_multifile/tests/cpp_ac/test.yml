@@ -1,4 +1,4 @@
-language: PY3
+language: PY2
 time: 5
 memory: 65536
 source: aplusb.py

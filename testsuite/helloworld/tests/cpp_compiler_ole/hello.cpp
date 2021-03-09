@@ -9,4 +9,6 @@
 #define I(x) H(x##x##x##x)
 #define J(x) I(x##x##x##x)
 #define K(x) J(x##x##x##x)
-int main() { int x = K(a); }
+int main() {
+    int x = K(a);
+}

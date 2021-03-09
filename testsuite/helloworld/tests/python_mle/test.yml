@@ -1,4 +1,4 @@
-language: PY3
+language: PY2
 time: 2
 memory: 8192
 source: helloworld.py
