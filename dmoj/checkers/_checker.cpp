@@ -134,8 +134,8 @@ static PyObject *checker_standard(PyObject *self, PyObject *args) {
 	check = check_standard(PyBytes_AsString(expected), PyBytes_Size(expected),
 							PyBytes_AsString(actual), PyBytes_Size(actual)) ?
 			Py_True : Py_False;
-	result = Py_BuildValue("Oy", check, BUFFER);
 	Py_END_ALLOW_THREADS
+	result = Py_BuildValue("Oy", check, BUFFER);
 	Py_DECREF(expected);
 	Py_DECREF(actual);
 	Py_INCREF(result);
