@@ -17,10 +17,10 @@ class ContribModule:
         return '{input_file} {answer_file}'
 
     @classmethod
-    def parse_return_code(cls, proc, executor, point_value, time_limit, memory_limit, feedback, name, stderr):
+    def parse_return_code(cls, proc, executor, point_value, time_limit, memory_limit, feedback, extended_feedback, name, stderr):
         if proc.returncode == cls.AC:
-            return CheckerResult(True, point_value, feedback=feedback)
+            return CheckerResult(True, point_value, feedback=feedback, extended_feedback=extended_feedback)
         elif proc.returncode == cls.WA:
-            return CheckerResult(False, 0, feedback=feedback)
+            return CheckerResult(False, 0, feedback=feedback, extended_feedback=extended_feedback)
         else:
             parse_helper_file_error(proc, executor, name, stderr, time_limit, memory_limit)

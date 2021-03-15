@@ -14,7 +14,7 @@ class ContribModule(TestlibContribModule):
         return '{input_file} {answer_file}'
 
     @classmethod
-    def parse_return_code(cls, proc, executor, point_value, time_limit, memory_limit, feedback, name, stderr):
+    def parse_return_code(cls, proc, executor, point_value, time_limit, memory_limit, feedback, extended_feedback, name, stderr):
         if proc.returncode == cls.PARTIAL:
             match = cls.repartial.search(stderr)
             if not match:
@@ -23,7 +23,7 @@ class ContribModule(TestlibContribModule):
             if not 0.0 <= percentage <= 1.0:
                 raise InternalError('Invalid fraction: %s' % match.group(1))
             points = percentage * point_value
-            return CheckerResult(True, points, feedback=feedback)
+            return CheckerResult(True, points, feedback=feedback, extended_feedback=extended_feedback)
         else:
             return super().parse_return_code(
                 proc, executor, point_value, time_limit, memory_limit, feedback, name, stderr,

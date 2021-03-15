@@ -2,7 +2,7 @@ FROM dmoj/runtimes-tier2
 
 ARG TAG=master
 RUN mkdir /judge /problems && cd /judge && \
-	curl -L https://github.com/DMOJ/judge-server/archive/"${TAG}".tar.gz | tar -xz --strip-components=1 && \
+	curl -L https://github.com/VNOI-Admin/judge-server/archive/"${TAG}".tar.gz | tar -xz --strip-components=1 && \
 	pip3 install -e . && \
 	sed -i 's/source "$HOME/. "\/home\/judge/' ~judge/.profile && \
 	. ~judge/.profile && \

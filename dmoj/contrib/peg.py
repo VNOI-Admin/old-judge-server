@@ -11,13 +11,13 @@ class ContribModule(DefaultContribModule):
         return '{answer_file} {output_file} {input_file}'
 
     @classmethod
-    def parse_return_code(cls, proc, executor, point_value, time_limit, memory_limit, feedback, name, stderr):
+    def parse_return_code(cls, proc, executor, point_value, time_limit, memory_limit, feedback, extended_feedback, name, stderr):
         if proc.returncode == cls.AC:
             return True
         elif proc.returncode == cls.WA:
             # PEG allows for a ratio of floating points
             # Scanning for floating points with a regex is impractical, so we loop all lines
-            feedback_lines = feedback.split('\n')
+            feedback_lines = extended_feedback.split('\n')
             for line1, line2 in zip(feedback_lines, feedback_lines[1:]):
                 try:
                     percentage = float(line1) / float(line2)

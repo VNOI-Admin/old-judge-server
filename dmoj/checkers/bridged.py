@@ -28,7 +28,7 @@ def check(
     judge_input,
     problem_id,
     files,
-    lang,
+    lang='CPP17',
     time_limit=env['generator_time_limit'],
     memory_limit=env['generator_memory_limit'],
     compiler_time_limit=env['generator_compiler_limit'],
@@ -67,7 +67,8 @@ def check(
             point_value,
             time_limit,
             memory_limit,
-            feedback=utf8text(proc_output) if feedback else '',
+            feedback='',
+            extended_feedback=utf8text(error) if feedback else '',
             name='checker',
             stderr=error,
         )
