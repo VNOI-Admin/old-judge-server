@@ -31,13 +31,13 @@ class ContribModule(DefaultContribModule):
             points = float(match.group(1))
             print(points)
             if not 0 <= points <= point_value:
-                raise InternalError('Invalid partial points: %d' % points)
+                raise InternalError('Invalid partial points: %f, must be between [%f; %f]' % (points, 0, point_value))
             return CheckerResult(True, points, feedback=feedback, extended_feedback=extended_feedback)
         elif proc.returncode == cls.WA:
             return CheckerResult(False, 0, feedback=feedback, extended_feedback=extended_feedback)
         elif proc.returncode == cls.PE:
             return CheckerResult(False, 0, feedback=feedback or 'Presentation Error', extended_feedback=extended_feedback)
         elif proc.returncode == cls.IE:
-            raise InternalError('%s failed assertion with message %s' % (name, feedback))
+            raise InternalError('%s failed assertion with message %s %s' % (name, feedback, extended_feedback))
         else:
             parse_helper_file_error(proc, executor, name, stderr, time_limit, memory_limit)
